@@ -1,0 +1,15 @@
+dataset/
+runs/
+RAI_project/
+results_D7/
+results_trees/
+results_F11/
+pred_vidz/
+spilkovaRAI/
+teset_labels_vis_01/
+test_label_vis/
+vidz/
+*.pt
+dataset.zip
+nezavirej.txt
+pred_vidz.zip
