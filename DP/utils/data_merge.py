@@ -8,19 +8,27 @@ import yaml
 from pathlib import Path
 import random
 
+#-------------------------------EDIT PATHS AS NEEDED ------------------------------
 # Paths
-SOURCE_FOLDERS = ['dataset/palacak_01', 'dataset/palacak_02']
-D_DIR = Path('dataset/data')
+SOURCE_FOLDERS = ['dataset/palacak_01', 'dataset/palacak_02', 'dataset/palacak_04']
+DATA_DIR_NAME = 'data_02'
+D_DIR = Path(f'dataset/{DATA_DIR_NAME}')
+
+#----------------------------------------------------------------------------------
+
+
 # Subsets
 SUBSETS = {
     'train' : 'Train',
     'val' : 'Validation',
-    'test' : 'Test'
+    'test' : 
+    'Test'
 }
 # for convinience (please don't hit me for this, i am lazy and my brain is not working)
 TRAIN_KEY = 'Train'
 VAL_KEY = 'Validation'
 TEST_KEY = 'Test'
+
 # Possible image extensions
 IMG_EXT = ['.jpg', '.png', '.jpeg', '.bmp']
 # Split
@@ -63,7 +71,7 @@ def move_files(image_list, dest_subset_pair, src_folder_name, src_lbl_root, txt_
         if old_lbl_path.exists():
             shutil.copy2(old_lbl_path, dest_lbl_path)
 
-        rel_path = f"dataset/data/images/{dest_subset_name}/{new_filename}"
+        rel_path = f"dataset/{DATA_DIR_NAME}/images/{dest_subset_name}/{new_filename}"
         txt_lists_dict[dest_subset_name_lower].append(rel_path)
         
 
