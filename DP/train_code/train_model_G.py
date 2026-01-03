@@ -5,20 +5,20 @@ from ultralytics import YOLO
 
 if __name__ == "__main__":
     # load pretrained yolo model
-    model = YOLO('yolo11n.pt')
+    model = YOLO('yolo11s.pt')
 
     # train model -- BARO ALWAYS CHANGE NAME FOR A NEW MODEL!!!
     model.train(
         # EDIT ALWAYS
         data='/home/student/Desktop/spilkova/dataset/data_02/data.yaml',
-        epochs=100,
+        epochs=150,
         imgsz=640,
         batch=8,
         # EDIT ALWAYS
         name='model_G',  
         pretrained=True,
         multi_scale=True,
-        patience=10,
+        patience=50,
         auto_augment='AugMix',
         visualize=True
     )

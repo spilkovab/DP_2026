@@ -2,7 +2,7 @@ from ultralytics import YOLO
 import yaml
 
 #---------------------------------
-MODEL = 'model_G3'
+MODEL = 'model_G4'
 YAML_FILE = 'data_02'
 #---------------------------------
 

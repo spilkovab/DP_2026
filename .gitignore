@@ -1,5 +1,6 @@
 dataset/
 runs/
+old_runs/
 RAI_project/
 results_D7/
 results_trees/
@@ -10,6 +11,7 @@ spilkovaRAI/
 teset_labels_vis_01/
 test_label_vis/
 vidz/
+outputs/
 *.pt
 dataset.zip
 nezavirej.txt

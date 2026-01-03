@@ -3,6 +3,11 @@
 # import yolo
 from ultralytics import YOLO
 
+#---------------------------------
+DATA = 'data_03'
+MODEL_NAME = 'model_H'
+#---------------------------------
+
 if __name__ == "__main__":
     # load pretrained yolo model
     model = YOLO('yolo11n.pt')
@@ -10,15 +15,15 @@ if __name__ == "__main__":
     # train model -- BARO ALWAYS CHANGE NAME FOR A NEW MODEL!!!
     model.train(
         # EDIT ALWAYS
-        data='/home/student/Desktop/spilkova/dataset/data_drone_01/data.yaml',
-        epochs=100,
+        data=f'/home/student/Desktop/spilkova/dataset/{DATA}/data.yaml',
+        epochs=150,
         imgsz=640,
         batch=8,
         # EDIT ALWAYS
-        name='model_H',  
+        name=MODEL_NAME,  
         pretrained=True,
         multi_scale=True,
-        patience=10,
+        patience=50,
         auto_augment='AugMix',
         visualize=True
     )
