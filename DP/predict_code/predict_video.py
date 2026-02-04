@@ -3,8 +3,8 @@ from ultralytics import YOLO
 
 #--------------------------------------
 MODEL_NAME = 'model_H2'
-VIDEO_PATH = "vidz/palacak_08.MOV"
-OUTPUT_PATH = f"/home/student/Desktop/spilkova/outputs/{MODEL_NAME}_inference.mp4"
+VIDEO_PATH = "vidz/palacak_09.MOV"
+OUTPUT_PATH = f"/home/student/Desktop/spilkova/outputs/{MODEL_NAME}_inference_palacak_09.mp4"
 # --------------------------------------
 
 model = YOLO(f"runs/detect/{MODEL_NAME}/weights/best.pt")

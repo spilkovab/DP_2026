@@ -4,10 +4,10 @@ This is a function for extracting frames from videos
 import cv2
 import os
 
-VIDEO_DIR = "/home/student/Desktop/spilkova/vidz/dron_data_raw/"
-OUTPUT_DIR = "/home/student/Desktop/spilkova/dataset/dron_raw/"
+VIDEO_DIR = "/home/student/Desktop/spilkova/vidz/"
+OUTPUT_DIR = "/home/student/Desktop/spilkova/dataset/"
 
-names = ["dron_01", "dron_02", "dron_03", "dron_04", "dron_05"]
+names = ["palacak_09"]
 
 # # Input video file
 # name = "dron_06"
@@ -16,7 +16,7 @@ names = ["dron_01", "dron_02", "dron_03", "dron_04", "dron_05"]
 frame_interval = 0.5  # Seconds
 
 for name in names:
-    video_path = os.path.join(VIDEO_DIR, f"{name}.MP4")
+    video_path = os.path.join(VIDEO_DIR, f"{name}.MOV")
     output_folder = os.path.join(OUTPUT_DIR, name)
 
     # Create output folder if it doesn't exist
