@@ -12,6 +12,7 @@ teset_labels_vis_01/
 test_label_vis/
 vidz/
 outputs/
+track_results/
 *.pt
 dataset.zip
 nezavirej.txt

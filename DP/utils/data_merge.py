@@ -10,8 +10,8 @@ import random
 
 #-------------------------------EDIT PATHS AS NEEDED ------------------------------
 # Paths
-SOURCE_FOLDERS = ['dataset/palacak_01', 'dataset/palacak_02', 'dataset/palacak_04', 'dataset/palacak_08', 'dataset/drone_01']
-DATA_DIR_NAME = 'data_03'
+SOURCE_FOLDERS = ['dataset/palacak_01', 'dataset/palacak_02', 'dataset/palacak_04', 'dataset/palacak_08', 'dataset/drone_01', 'dataset/dobratice_03']
+DATA_DIR_NAME = 'data_04'
 D_DIR = Path(f'dataset/{DATA_DIR_NAME}')
 
 #----------------------------------------------------------------------------------
@@ -21,8 +21,7 @@ D_DIR = Path(f'dataset/{DATA_DIR_NAME}')
 SUBSETS = {
     'train' : 'Train',
     'val' : 'Validation',
-    'test' : 
-    'Test'
+    'test' : 'Test'
 }
 # for convinience (please don't hit me for this, i am lazy and my brain is not working)
 TRAIN_KEY = 'Train'

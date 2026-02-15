@@ -7,7 +7,7 @@ import os
 VIDEO_DIR = "/home/student/Desktop/spilkova/vidz/"
 OUTPUT_DIR = "/home/student/Desktop/spilkova/dataset/"
 
-names = ["palacak_09"]
+names = ["dobratice_02"]
 
 # # Input video file
 # name = "dron_06"

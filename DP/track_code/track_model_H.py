@@ -6,12 +6,12 @@ import torch
 
 print(torch.cuda.is_available())
 print(torch.cuda.get_device_name(0) if torch.cuda.is_available() else "NO GPU")
-model = YOLO("runs/detect/model_H2/weights/best.pt")
+model = YOLO("runs/detect/model_I/weights/best.pt")
 model.to("cuda")
 
 model.model.half()
 
-video_path = "vidz/palacak_08.MOV"
+video_path = "vidz/dobratice_02.MOV"
 # cap = cv2.VideoCapture(video_path)
 
 results = model.track(
@@ -21,7 +21,9 @@ results = model.track(
     imgsz=640,
     device=0,
     half=True,
-    vid_stride=2
+    vid_stride=2,
+    save_txt=True,
+    project="DP/track_results"
 )
 
 for r in results:
