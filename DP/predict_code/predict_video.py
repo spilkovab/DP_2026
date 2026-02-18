@@ -1,16 +1,28 @@
 import cv2
+import sys
+import os
 from ultralytics import YOLO
 
-#--------------------------------------
+# Path for utils
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(current_dir, ".."))
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
+from utils.visualization import draw_custom_annotations
+
+#------------- LOAD PATHS --------------
 MODEL_NAME = 'model_I'
-VIDEO_PATH = "vidz/dobratice_02.MOV"
+VIDEO_PATH = "vidz/palacak_08.MOV"
 OUTPUT_PATH = f"/home/student/Desktop/spilkova/outputs/{MODEL_NAME}_inference_palacak_08.mp4"
 # --------------------------------------
 
+# load model
 model = YOLO(f"runs/detect/{MODEL_NAME}/weights/best.pt")
-
+# load video
 cap = cv2.VideoCapture(VIDEO_PATH)
 
+# get video properties
 fps = cap.get(cv2.CAP_PROP_FPS)
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -19,45 +31,27 @@ fourcc = cv2.VideoWriter_fourcc(*"mp4v")
 out = cv2.VideoWriter(OUTPUT_PATH, fourcc, fps, (width, height))
 
 while cap.isOpened():
-    # Read a frame from the video
+    # read frame
     success, frame = cap.read()
 
     if success:
-        # Run YOLO inference on the frame
+        # run inference
         results = model(frame)
 
-        # Visualize the results on the frame
-        annotated_frame = results[0].plot()
+        # custom visualization
+        annotated_frame = draw_custom_annotations(frame, results[0], names=model.names, mode='ID')
+        # annotated_frame = results[0].plot()
 
-        # Display the annotated frame
+        # show frame
         cv2.imshow("YOLO Inference", annotated_frame)
 
-        # Break the loop if 'q' is pressed
+        # exit if 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
     else:
-        # Break the loop if the end of the video is reached
+        # break on the last frame
         break
 
-# Release the video capture object and close the display window
+
 cap.release()
 cv2.destroyAllWindows()
-
-# while cap.isOpened():
-#     success, frame = cap.read()
-#     if not success:
-#         break
-
-#     # Run inference
-#     results = model(frame, verbose=False, show=True)
-
-#     # Annotate frame
-#     annotated_frame = results[0].plot()
-
-#     # Save frame
-#     out.write(annotated_frame)
-
-# cap.release()
-# out.release()
-
-# print(f"Saved true-speed inference video to: {OUTPUT_PATH}")

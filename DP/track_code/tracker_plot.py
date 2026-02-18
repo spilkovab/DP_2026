@@ -1,12 +1,25 @@
 from collections import defaultdict
-
 import cv2
 import numpy as np
-
 from ultralytics import YOLO
+import sys
+import os
+# Path to utils
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(current_dir, ".."))
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
+from utils.visualization import draw_custom_annotations
+
+# ------------- LOAD PATHS -------------
+video_path = "vidz/palacak_08.MOV"
+model_name = 'model_I'
+project_path = "DP/track_results"
+# --------------------------------------
 
 # Load the YOLO model
-model = YOLO("runs/detect/model_H2/weights/best.pt")
+model = YOLO(f"runs/detect/{model_name}/weights/best.pt")
 
 CLASS_COLOR = {
     0: (49, 211,0),
@@ -16,69 +29,55 @@ CLASS_COLOR = {
     4: (203,192,255)
 }
 
-# Open the video file
-video_path = "vidz/palacak_08.MOV"
+# load video
 cap = cv2.VideoCapture(video_path)
 
-# Získání rozměrů a nastavení měřítka (zmenšíme okna, aby se vešla vedle sebe)
+# get size for windows
 orig_width  = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 orig_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-display_width = 1000  # Šířka jednoho okna
+display_width = 1000
 display_height = int(orig_height * (display_width / orig_width))
 
-# Definice názvů oken
+# Windows names
 win_video = "Custom Visuals (Video)"
 win_graph = "Trajectory Map (White)"
 
-# Inicializace oken
+# windows init
 cv2.namedWindow(win_video, cv2.WINDOW_NORMAL)
 cv2.namedWindow(win_graph, cv2.WINDOW_NORMAL)
 
-# Nastavení velikosti oken
+# set window size
 cv2.resizeWindow(win_video, display_width, display_height)
 cv2.resizeWindow(win_graph, display_width, display_height)
 
-# --- KLÍČOVÁ ČÁST: Umístění oken vedle sebe ---
-cv2.moveWindow(win_video, 50, 100)              # První okno (x=50, y=100)
+# place windows next to each other
+cv2.moveWindow(win_video, 50, 100)
 cv2.moveWindow(win_graph, display_width + 70, 100)
 
-# # w, h for trajectory plot
-# width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)) + 50
-# height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)) +50
 trajectory_map = np.ones((orig_height, orig_width, 3), dtype=np.uint8) * 255
-
-# margin = 50
-# X axis
-# cv2.arrowedLine(trajectory_map, (margin, height - margin), (width - margin, height - margin), (0, 0, 0), 2)
-# cv2.putText(trajectory_map, "X (px)", (width - 100, height - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
-
-# Y axis
-# cv2.arrowedLine(trajectory_map, (margin, height - margin), (margin, margin), (0, 0, 0), 2)
-
-# cv2.putText(trajectory_map, "Y (px)", (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
 
 # Store the track history
 track_history = defaultdict(lambda: [])
 
 # Loop through the video frames
 while cap.isOpened():
-    # Read a frame from the video
+    # read frame
     success, frame = cap.read()
 
     if success:
         # persisting tracks between frames
         result = model.track(frame, persist=True)[0]
 
-        # Get the boxes and track IDs
+        # get the boxes and track IDs
         if result.boxes and result.boxes.is_track:
             boxes = result.boxes.xywh.cpu()
             track_ids = result.boxes.id.int().cpu().tolist()
             clss = result.boxes.cls.int().cpu().tolist()
 
-            # Visualize the result on the frame
-            annotated_frame = result.plot()
+            # custom visualization
+            annotated_frame = draw_custom_annotations(result.orig_img.copy(), result, names=model.names, mode='Name')
 
-            # Plot the tracks
+            # plot tracks
             for box, track_id, clas in zip(boxes, track_ids,clss):
                 x, y, w, h = box
                 track = track_history[track_id]
