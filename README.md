@@ -1,6 +1,6 @@
 # Obstacle detection in off-road environments using convolutional neural networks - Master's thesis
 
-This repository contains all the important files for the Master's thesis, except the dataset images
+This repository contains all the important files for the Master's thesis, except the dataset images and trained models due to their size
 
 - **DP/** -- Main folder for code
   - **predict_code/** -- Running inference
@@ -10,3 +10,4 @@ This repository contains all the important files for the Master's thesis, except
   - **utils/**        -- Utils/helper code
 - **runs/detect**  -- Results
 - **val_results/** -- Separate validation results
+
