@@ -12,9 +12,9 @@ if project_root not in sys.path:
 from utils.visualization import draw_custom_annotations
 
 #------------- LOAD PATHS --------------
-MODEL_NAME = 'model_I'
-VIDEO_PATH = "vidz/palacak_08.MOV"
-OUTPUT_PATH = f"/home/student/Desktop/spilkova/outputs/{MODEL_NAME}_inference_palacak_08.mp4"
+MODEL_NAME = 'model_J'
+VIDEO_PATH = "vidz/dobratice_01.MOV"
+OUTPUT_PATH = f"/home/student/Desktop/spilkova/outputs/{MODEL_NAME}_inference_dobratice_02.mp4"
 # --------------------------------------
 
 # load model

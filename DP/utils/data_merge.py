@@ -10,8 +10,8 @@ import random
 
 #-------------------------------EDIT PATHS AS NEEDED ------------------------------
 # Paths
-SOURCE_FOLDERS = ['dataset/palacak_01', 'dataset/palacak_02', 'dataset/palacak_04', 'dataset/palacak_08', 'dataset/drone_01', 'dataset/dobratice_03']
-DATA_DIR_NAME = 'data_04'
+SOURCE_FOLDERS = ['dataset/palacak_01', 'dataset/palacak_02', 'dataset/palacak_04', 'dataset/palacak_08', 'dataset/drone_01', 'dataset/dobratice_03', 'dataset/strelnice_02']
+DATA_DIR_NAME = 'data_05'
 D_DIR = Path(f'dataset/{DATA_DIR_NAME}')
 
 #----------------------------------------------------------------------------------
