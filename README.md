@@ -27,13 +27,13 @@ The dataset was collected and manually annotated using the **CVAT (Computer Visi
 
 ### Results and Outputs
 
-- **runs/detect/** - Detection results and model inference outputs
-- **val_results/** - Detailed validation metrics and performance analysis
+- **runs/detect/** - Detection results, model training and validation results
+- **val_results/** - Detailed validation metrics
 
 ## Technology Stack
 
 - **Language:** Python
-- **Core Framework:** Convolutional Neural Networks
+- **Core Framework:** Convolutional Neural Networks - YOLO Ultralytics (TODO: reference)
 - **Application:** Off-road obstacle detection and object tracking
 
 ## Key Features
