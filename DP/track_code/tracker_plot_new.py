@@ -5,7 +5,7 @@ from ultralytics import YOLO
 import sys
 import os
 
-# --- UTILS PATH SETUP ---
+# Path setup
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, ".."))
 if project_root not in sys.path:
@@ -13,7 +13,7 @@ if project_root not in sys.path:
 
 from utils.visualization import draw_custom_annotations
 
-# ------------- CONFIGURATION -------------
+# Config
 model_name = 'model_J'
 video_path = "vidz/palacak_08_cut.MP4"
 model_path = f"runs/detect/{model_name}/weights/best.pt"
@@ -29,13 +29,12 @@ CLASS_COLOR = {
 }
 
 MARGIN = 100  # Pixels for labels outside the main box
-# ------------------------------------------
 
 def get_rotated_text_image(text, font_scale, thickness, color):
     """Creates a small image with rotated text for the Y-axis."""
     font = cv2.FONT_HERSHEY_SIMPLEX
     (w, h), baseline = cv2.getTextSize(text, font, font_scale, thickness)
-    # Create white background for text
+    # White backgropund
     txt_img = np.ones((h + 10, w + 10, 3), dtype=np.uint8) * 255
     cv2.putText(txt_img, text, (5, h + 2), font, font_scale, color, thickness)
     # Rotate 90 degrees counter-clockwise
@@ -48,15 +47,15 @@ def create_base_canvas(width, height, margin):
     canvas = np.ones((canvas_h, canvas_w, 3), dtype=np.uint8) * 255
     
     color = (0, 0, 0)
-    # 1. Draw the Main Tracking Box (The boundary)
+    # Main tracking box
     cv2.rectangle(canvas, (margin, margin), (margin + width, margin + height), color, 2)
     
-    # 2. X-Axis Label (Bottom)
+    # X axis
     x_text = f"Width: {width}px"
     cv2.putText(canvas, x_text, (margin + width // 2 - 80, margin + height + 50), 
                 cv2.FONT_HERSHEY_SIMPLEX, 1.2, color, 2)
     
-    # 3. Y-Axis Label (Left, Rotated)
+    # Y axis
     y_text_img = get_rotated_text_image(f"Height: {height}px", 1.2, 2, color)
     rh, rw = y_text_img.shape[:2]
     y_offset = margin + (height // 2) - (rh // 2)
@@ -64,7 +63,7 @@ def create_base_canvas(width, height, margin):
     
     return canvas
 
-# --- INITIALIZE ---
+# INIT MODEL
 model = YOLO(model_path)
 cap = cv2.VideoCapture(video_path)
 
@@ -92,7 +91,7 @@ while cap.isOpened():
     if not success:
         break
 
-    # Start with a fresh canvas every frame for the "last 50 frames" effect
+    # Fresh canvas every 50 frames
     current_graph = create_base_canvas(orig_width, orig_height, MARGIN)
 
     # YOLO Tracking
@@ -100,7 +99,7 @@ while cap.isOpened():
     annotated_frame = frame.copy()
 
     if results.boxes is not None and results.boxes.id is not None:
-        # Draw custom annotations on the video frame
+        # Draw custom annotations
         annotated_frame = draw_custom_annotations(frame.copy(), results, names=model.names, mode='Name')
         
         boxes = results.boxes.xywh.cpu()
@@ -112,14 +111,13 @@ while cap.isOpened():
             track = track_history[track_id]
             track.append((float(x), float(y)))
 
-            # 1. LIMIT TO LAST 50 FRAMES
             if len(track) > 100:
                 track.pop(0)
 
-            # 2. DRAW ON GRAPH (with MARGIN offset)
+            # Draw graph
             color = CLASS_COLOR.get(int(cls), (0, 0, 0))
             
-            # Convert track points to numpy array and add the margin offset
+            # Convert track points to numpy array, add the margin offset
             pts = np.array(track).astype(np.int32)
             pts[:, 0] += MARGIN
             pts[:, 1] += MARGIN
@@ -127,13 +125,13 @@ while cap.isOpened():
             # Draw trail
             cv2.polylines(current_graph, [pts.reshape((-1, 1, 2))], isClosed=False, color=color, thickness=2)
             
-            # Draw current position dot + Object ID
+            # Draw current position: dot + Object ID
             curr_x, curr_y = pts[-1]
             cv2.circle(current_graph, (curr_x, curr_y), 5, color, -1)
             cv2.putText(current_graph, f"ID:{track_id}", (curr_x + 8, curr_y - 8), 
                         cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
     
-    # Save both videos
+    # Save videos
     out_video.write(annotated_frame)
     out_graph.write(current_graph)
 
