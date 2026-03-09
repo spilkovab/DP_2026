@@ -1,5 +1,7 @@
 # Object Detection in Off-Road Terrain
 
+(README.md written with copilot)
+
 A comprehensive deep learning project for detecting obstacles in off-road environments using convolutional neural networks, developed as a Master's thesis.
 
 ## Project Overview
