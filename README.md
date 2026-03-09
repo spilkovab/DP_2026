@@ -1,17 +1,10 @@
-# Obstacle detection in off-road environments using convolutional neural networks - Master's thesis
+# Important Files
 
-This repository contains all the important files for the Master's thesis, except the dataset images and trained models due to their size
+This repository contains several important files, each serving specific purposes:
 
-Dataset was collected and annotated by hand using the CVAT software (Boris Sekachev, Nikita Manovich, et al. (2020). Computer Vision Annotation Tool (CVAT) [Computer software]. Available at https://github.com/cvat-ai/cvat.)
+- **src/**: This directory contains the source code for the project, organized in modules.
+- **tests/**: This folder includes unit tests to ensure code quality and reliability.
+- **docs/**: Documentation can be found here, detailing the project structure and usage.
+- **LICENSE**: The licensing terms under which the project is distributed.
 
-- **DP/** -- Main folder for code
-  - **predict_code/** -- Running inference
-  - **track_code/**   -- Object tracking implementation
-  - **train_code/**   -- Files for training each model
-  - **val_code/**     -- Code for model validation
-  - **utils/**        -- Utils/helper code
-- **runs/detect**  -- Results
-- **val_results/** -- Separate validation results
-
-
-
+Please refer to these files for detailed information regarding the functionality and structure of the project.
