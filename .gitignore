@@ -17,3 +17,5 @@ track_results/
 dataset.zip
 nezavirej.txt
 pred_vidz.zip
+*.mp4
+*.mov
