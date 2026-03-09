@@ -14,11 +14,9 @@ if __name__ == "__main__":
 
     # train model -- BARO ALWAYS CHANGE NAME FOR A NEW MODEL!!!  
     model.train(
-        # EDIT ALWAYS
         data=f'/home/student/Desktop/spilkova/dataset/{DATA}/data.yaml',
         imgsz=640,
         batch=8,
-        # EDIT ALWAYS
         name=MODEL_NAME,  
         pretrained=True,
         multi_scale=True,
