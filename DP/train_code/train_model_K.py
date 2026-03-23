@@ -1,5 +1,4 @@
 ''' SCRIPT FOR TRAINING A YOLO MODEL'''
-# TRAINED ON PALACAK 01, 02, 04
 # import yolo
 from ultralytics import YOLO
 
