@@ -111,12 +111,10 @@ python DP/predict_code/predict_video.py
 ```
  
 The script will:
-- Load the YOLO model and run it on GPU (`cuda`) — make sure CUDA is available, or change `model.to('cuda')` to `model.to('cpu')`
-- Resize frames to 1280px width while preserving aspect ratio
 - Save the annotated video to the specified `OUTPUT_PATH`
 - Display the inference in a window in real time — press `q` to stop early
 
-The ```predict_video.py``` and ```tracker_plot_new.py``` scripts use a ```draw_custom_annotations``` function from ```utils/visualization.py```. Please refer to the code documentation for more information on how to correctly use this function.
+The `predict_video.py` and `tracker_plot_new.py` scripts use a `draw_custom_annotations` function from `utils/visualization.py`. Please refer to the code documentation for more information on how to correctly use this function.
 
 ### Training the model
 This script was used for training the latest version (model_K). To replicate the process follow these steps:
@@ -130,7 +128,7 @@ MODEL_NAME = 'model_K'  # name for the new model - use a unique name to avoid ov
  
 The script expects your dataset to be located at:
 ```
-dataset/<DATA>/data.yaml
+dataset/<DATA>/
 ```
  
 Then run:
@@ -144,7 +142,7 @@ The script will:
 - Train with image size 640, batch size 8, AugMix augmentation, and multi-scale training
 - Use early stopping with a patience of 150 epochs
 - Run validation automatically after training and print metrics
-- Save all results to `runs/detect/MODEL_NAME/`
+- Save all results to `runs/detect/<MODEL_NAME>/`
  
 > **Note:** Training requires a CUDA-capable GPU. The base model `yolo11s.pt` will be downloaded automatically by Ultralytics on first use.
  
