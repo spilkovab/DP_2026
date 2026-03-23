@@ -82,23 +82,107 @@ DP_2026/
 
 ## Usage
 
-### Run inference on an image or video
-
-```bash
-python DP/predict_code/predict.py --source path/to/your/image_or_video
+### Run inference on a video
+ 
+Before running, open `DP/predict_code/predict_video.py` and set the following paths at the top of the file:
+ 
+```python
+MODEL_NAME = 'model_K3'                         # name of your model folder under runs/detect/
+VIDEO_PATH = "path/to/your/input_video.MOV"     # path to input video
+OUTPUT_PATH = "path/to/your/output_video.mp4"   # path for the annotated output video
 ```
-
-### Train the model
-
-```bash
-python DP/train_code/train.py --data path/to/data.yaml --epochs 100
+ 
+The script expects the model weights to be located at:
 ```
+runs/detect/<MODEL_NAME>/weights/best.pt
+```
+ 
+Then run:
+ 
+```bash
+python DP/predict_code/predict_video.py
+```
+ 
+The script will:
+- Load the YOLO model and run it on GPU (`cuda`) — make sure CUDA is available, or change `model.to('cuda')` to `model.to('cpu')`
+- Resize frames to 1280px width while preserving aspect ratio
+- Save the annotated video to the specified `OUTPUT_PATH`
+- Display the inference in a window in real time — press `q` to stop early
 
+The ```predict_video.py``` and ```tracker_plot_new.py``` scripts use a ```draw_custom_annotations``` function from ```utils/visualization.py```. Please refer to the code documentation for more information on how to correctly use this function.
+
+### Training the model
+This script was used for training the latest version (model_K). To replicate the process follow these steps:
+
+Before running, open `DP/train_code/train_model_K.py` and set the following variables at the top of the file:
+ 
+```python
+DATA = 'data_06'        # name of your dataset folder under dataset/
+MODEL_NAME = 'model_K'  # name for the new model - use a unique name to avoid overwriting
+```
+ 
+The script expects your dataset to be located at:
+```
+dataset/<DATA>/data.yaml
+```
+ 
+Then run:
+ 
+```bash
+python DP/train_code/train_model_K.py
+```
+ 
+The script will:
+- Download `yolo11s.pt` automatically on first run (pretrained YOLO11 small weights)
+- Train with image size 640, batch size 8, AugMix augmentation, and multi-scale training
+- Use early stopping with a patience of 150 epochs
+- Run validation automatically after training and print metrics
+- Save all results to `runs/detect/MODEL_NAME/`
+ 
+> **Note:** Training requires a CUDA-capable GPU. The base model `yolo11s.pt` will be downloaded automatically by Ultralytics on first use.
+ 
 ### Validate the model
-
+ 
+Validation runs automatically at the end of training. To run it separately on an already trained model:
+ 
 ```bash
-python DP/val_code/val.py --weights DP/weights/best.pt --data path/to/data.yaml
+python DP/val_code/val_model_K.py
 ```
+
+### Track objects in a video
+ 
+Before running, open `DP/track_code/tracker_plot_new.py` and set the following variables at the top of the file:
+ 
+```python
+model_name     = 'model_J'                       # name of your model folder under runs/detect/
+video_path     = "vidz/palacak_08_cut.MP4"       # path to input video
+save_path_video = "track_results/annotated_tracking_model_J.mp4"  # annotated output video
+save_path_graph = "track_results/trajectory_graph_model_J.mp4"    # trajectory graph output
+```
+ 
+Then run:
+ 
+```bash
+python DP/track_code/track.py
+```
+ 
+The script will:
+- Run YOLO tracking (`persist=True`) on each frame and assign consistent IDs across frames
+- Save two output videos: an annotated video with bounding boxes and labels, and a separate trajectory graph showing the movement paths of each tracked object
+- Display both windows in real time — press `q` to stop early
+- Track up to the last 100 positions per object, with trajectories color-coded by class
+
+The class color mapping is:
+
+| Class ID | Color |
+|----------|-------|
+| 0 | Green |
+| 1 | Yellow |
+| 2 | Purple |
+| 3 | Blue |
+| 4 | Light pink |
+
+> **Note:** Make sure the track_results/ output directory exists before running, or the video writers will silently fail.
 
 ## References
 
