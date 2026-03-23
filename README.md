@@ -52,13 +52,15 @@ pip install -r requirements.txt
 
 ### 3. Download model weights
 
-Pretrained model weights are not included in the repository. Download them from the [Releases page](https://github.com/spilkovab/DP_2026/releases) and place them in the following location:
+Pretrained model weights are not included in the repository. Download them from the [Drive folder](https://drive.google.com/drive/folders/13HK3aNuS0XGXs0uKUe35SjNUQdC3RddV?usp=sharing).
 
 ```
 DP_2026/
 └── DP/
-    └── weights/
-        └── best.pt     # place downloaded weights here
+    └── runs/detect/
+        └── model_K3/
+            └── weights/
+                └── best.pt     # place downloaded weights here
 ```
 
 ### 4. Prepare your dataset
@@ -96,7 +98,12 @@ The script expects the model weights to be located at:
 ```
 runs/detect/<MODEL_NAME>/weights/best.pt
 ```
- 
+
+If you placed the weights in different directory, you need to edit the paths in the following line of code:
+```python
+model = YOLO("path/to/your/weights/best.pt")
+```
+
 Then run:
  
 ```bash
