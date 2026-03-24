@@ -94,7 +94,6 @@ flowchart TD
     end
 
     V --> FE
-    I --> CVAT
     FE --> CVAT
     CVAT --> DM
     DM --> TR
