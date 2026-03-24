@@ -4,7 +4,7 @@ A deep learning project for detecting obstacles in off-road environments using Y
 
 ## Project Overview
 
-This repository contains the complete implementation of a CNN-based object detection system designed to identify obstacles in challenging off-road terrain. The system leverages computer vision techniques to enable autonomous navigation in unstructured environments. For full architecture overview see [ARCHITECTURE.md](github.com/spilkovab/DP_2026/blob/main/ARCHITECTURE.md)
+This repository contains the complete implementation of a CNN-based object detection system designed to identify obstacles in challenging off-road terrain. The system leverages computer vision techniques to enable autonomous navigation in unstructured environments. For full architecture overview see [ARCHITECTURE.md](ARCHITECTURE.md)
 
 > **Note:** The dataset images and trained model weights are not included due to their large file size. See the [Drive folder](https://drive.google.com/drive/folders/13HK3aNuS0XGXs0uKUe35SjNUQdC3RddV?usp=sharing) where the latest iteration of dataset and weights of **model_K3** are saved. For previous versions of the dataset or weights for other models please contact me at *TODO: email*
 
