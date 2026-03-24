@@ -13,14 +13,13 @@
 2. [Repository Structure](#2-repository-structure)
 3. [System Architecture](#3-system-architecture)
 4. [Data Pipeline](#4-data-pipeline)
-5. [Model Architecture](#5-model-architecture)
-6. [Training Pipeline](#6-training-pipeline)
-7. [Inference Pipeline](#7-inference-pipeline)
-8. [Tracking System](#8-tracking-system)
-9. [Module Reference](#9-module-reference)
-10. [Class & Color Schema](#10-class--color-schema)
-11. [Model Evolution](#11-model-evolution)
-12. [Dependencies](#12-dependencies)
+5. [Training Pipeline](#6-training-pipeline)
+6. [Inference Pipeline](#7-inference-pipeline)
+7. [Tracking System](#8-tracking-system)
+8. [Module Reference](#9-module-reference)
+9. [Class & Color Schema](#10-class--color-schema)
+10. [Model Evolution](#11-model-evolution)
+11. [Dependencies](#12-dependencies)
 
 ---
 
@@ -174,7 +173,7 @@ All coordinates are normalised to `[0, 1]` relative to image dimensions.
 
 ---
 
-## 6. Training Pipeline
+## 5. Training Pipeline
 
 ```mermaid
 sequenceDiagram
@@ -203,7 +202,7 @@ sequenceDiagram
 
 ---
 
-## 7. Inference Pipeline
+## 6. Inference Pipeline
 
 ```mermaid
 flowchart TD
@@ -230,7 +229,7 @@ flowchart TD
 
 ---
 
-## 8. Tracking System
+## 7. Tracking System
 
 ```mermaid
 flowchart TD
@@ -261,7 +260,7 @@ flowchart TD
 
 ---
 
-## 9. Module Reference
+## 8. Module Reference
 
 ### `DP/utils/`
 
@@ -316,7 +315,7 @@ flowchart TD
 
 ---
 
-## 10. Class & Color Schema
+## 9. Class & Color Schema
 
 | ID | Class | Hex | RGB | Usage |
 |----|-------|-----|-----|-------|
@@ -330,7 +329,7 @@ flowchart TD
 
 ---
 
-## 11. Model Evolution
+## 10. Model Evolution
 
 ```mermaid
 timeline
@@ -352,7 +351,7 @@ Each iteration introduced improvements to one or more of: dataset size and quali
 
 ---
 
-## 12. Dependencies
+## 11. Dependencies
 
 ```mermaid
 graph LR
