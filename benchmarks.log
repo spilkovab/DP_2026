@@ -1,0 +1,120 @@
+
+Benchmarks complete for /home/student/Desktop/spilkova/runs/detect/model_F11/weights/best.pt on /home/student/Desktop/spilkova/dataset/data/data.yaml at imgsz=640 (253.93s)
+Benchmarks legend:  - ✅ Success  - ❎ Export passed but validation failed  - ❌️ Export failed
+                   Format Status❔  Size (MB) metrics/mAP50-95(B) Inference time (ms/im)    FPS
+0                 PyTorch       ✅        5.2              0.5911                  23.68  42.22
+1             TorchScript       ✅       10.4              0.5866                  14.35  69.67
+2                    ONNX       ✅       10.1              0.5866                 158.31   6.32
+3                OpenVINO       ❌        0.0                   -                      -      -
+4                TensorRT       ❌        0.0                   -                      -      -
+5                  CoreML       ❌        0.0                   -                      -      -
+6   TensorFlow SavedModel       ❌        0.0                   -                      -      -
+7     TensorFlow GraphDef       ❌        0.0                   -                      -      -
+8         TensorFlow Lite       ❌        0.0                   -                      -      -
+9     TensorFlow Edge TPU       ❌        0.0                   -                      -      -
+10          TensorFlow.js       ❌        0.0                   -                      -      -
+11           PaddlePaddle       ❌        0.0                   -                      -      -
+12                    MNN       ❌        0.0                   -                      -      -
+13                   NCNN       ✅       10.0              0.5866                 190.62   5.25
+14                    IMX       ❌        0.0                   -                      -      -
+15                   RKNN       ❌        0.0                   -                      -      -
+
+Benchmarks complete for /home/student/Desktop/spilkova/runs/detect/model_G4/weights/best.pt on /home/student/Desktop/spilkova/dataset/data_02/data.yaml at imgsz=640 (98.37s)
+Benchmarks legend:  - ✅ Success  - ❎ Export passed but validation failed  - ❌️ Export failed
+                   Format Status❔  Size (MB) metrics/mAP50-95(B) Inference time (ms/im)    FPS
+0                 PyTorch       ✅       18.3              0.6559                  19.32  51.75
+1             TorchScript       ✅       36.4              0.6357                  14.83  67.44
+2                    ONNX       ✅       36.2              0.6357                 404.93   2.47
+3                OpenVINO       ❌        0.0                   -                      -      -
+4                TensorRT       ❌        0.0                   -                      -      -
+5                  CoreML       ❌        0.0                   -                      -      -
+6   TensorFlow SavedModel       ❌        0.0                   -                      -      -
+7     TensorFlow GraphDef       ❌        0.0                   -                      -      -
+8         TensorFlow Lite       ❌        0.0                   -                      -      -
+9     TensorFlow Edge TPU       ❌        0.0                   -                      -      -
+10          TensorFlow.js       ❌        0.0                   -                      -      -
+11           PaddlePaddle       ❌        0.0                   -                      -      -
+12                    MNN       ❌        0.0                   -                      -      -
+13                   NCNN       ✅       36.0              0.6357                 487.13   2.05
+14                    IMX       ❌        0.0                   -                      -      -
+15                   RKNN       ❌        0.0                   -                      -      -
+
+Benchmarks complete for /home/student/Desktop/spilkova/runs/detect/model_H2/weights/best.pt on /home/student/Desktop/spilkova/dataset/data_03/data.yaml at imgsz=640 (60.38s)
+Benchmarks legend:  - ✅ Success  - ❎ Export passed but validation failed  - ❌️ Export failed
+                   Format Status❔  Size (MB) metrics/mAP50-95(B) Inference time (ms/im)    FPS
+0                 PyTorch       ✅        5.2              0.5209                  20.47  48.86
+1             TorchScript       ✅       10.4              0.5018                  13.21  75.72
+2                    ONNX       ✅       10.1              0.5018                 157.54   6.35
+3                OpenVINO       ❌        0.0                   -                      -      -
+4                TensorRT       ❌        0.0                   -                      -      -
+5                  CoreML       ❌        0.0                   -                      -      -
+6   TensorFlow SavedModel       ❌        0.0                   -                      -      -
+7     TensorFlow GraphDef       ❌        0.0                   -                      -      -
+8         TensorFlow Lite       ❌        0.0                   -                      -      -
+9     TensorFlow Edge TPU       ❌        0.0                   -                      -      -
+10          TensorFlow.js       ❌        0.0                   -                      -      -
+11           PaddlePaddle       ❌        0.0                   -                      -      -
+12                    MNN       ❌        0.0                   -                      -      -
+13                   NCNN       ✅       10.0              0.5018                 151.16   6.62
+14                    IMX       ❌        0.0                   -                      -      -
+15                   RKNN       ❌        0.0                   -                      -      -
+
+Benchmarks complete for /home/student/Desktop/spilkova/runs/detect/model_I/weights/best.pt on /home/student/Desktop/spilkova/dataset/data_04/data.yaml at imgsz=640 (154.58s)
+Benchmarks legend:  - ✅ Success  - ❎ Export passed but validation failed  - ❌️ Export failed
+                   Format Status❔  Size (MB) metrics/mAP50-95(B) Inference time (ms/im)    FPS
+0                 PyTorch       ✅       18.3              0.6228                  16.57  60.33
+1             TorchScript       ✅       36.4               0.588                  14.91  67.05
+2                    ONNX       ✅       36.2               0.588                  400.6    2.5
+3                OpenVINO       ❌        0.0                   -                      -      -
+4                TensorRT       ❌        0.0                   -                      -      -
+5                  CoreML       ❌        0.0                   -                      -      -
+6   TensorFlow SavedModel       ❌        0.0                   -                      -      -
+7     TensorFlow GraphDef       ❌        0.0                   -                      -      -
+8         TensorFlow Lite       ❌        0.0                   -                      -      -
+9     TensorFlow Edge TPU       ❌        0.0                   -                      -      -
+10          TensorFlow.js       ❌        0.0                   -                      -      -
+11           PaddlePaddle       ❌        0.0                   -                      -      -
+12                    MNN       ❌        0.0                   -                      -      -
+13                   NCNN       ✅       36.0               0.588                 439.17   2.28
+14                    IMX       ❌        0.0                   -                      -      -
+15                   RKNN       ❌        0.0                   -                      -      -
+
+Benchmarks complete for /home/student/Desktop/spilkova/runs/detect/model_J/weights/best.pt on /home/student/Desktop/spilkova/dataset/data_05/data.yaml at imgsz=640 (163.55s)
+Benchmarks legend:  - ✅ Success  - ❎ Export passed but validation failed  - ❌️ Export failed
+                   Format Status❔  Size (MB) metrics/mAP50-95(B) Inference time (ms/im)    FPS
+0                 PyTorch       ✅       54.5               0.634                  16.93  59.07
+1             TorchScript       ✅       36.4              0.6346                  14.97  66.78
+2                    ONNX       ✅       36.2              0.6346                 401.11   2.49
+3                OpenVINO       ❌        0.0                   -                      -      -
+4                TensorRT       ❌        0.0                   -                      -      -
+5                  CoreML       ❌        0.0                   -                      -      -
+6   TensorFlow SavedModel       ❌        0.0                   -                      -      -
+7     TensorFlow GraphDef       ❌        0.0                   -                      -      -
+8         TensorFlow Lite       ❌        0.0                   -                      -      -
+9     TensorFlow Edge TPU       ❌        0.0                   -                      -      -
+10          TensorFlow.js       ❌        0.0                   -                      -      -
+11           PaddlePaddle       ❌        0.0                   -                      -      -
+12                    MNN       ❌        0.0                   -                      -      -
+13                   NCNN       ✅       36.0              0.6346                 455.86   2.19
+14                    IMX       ❌        0.0                   -                      -      -
+15                   RKNN       ❌        0.0                   -                      -      -
+
+Benchmarks complete for /home/student/Desktop/spilkova/runs/detect/model_K3/weights/best.pt on /home/student/Desktop/spilkova/dataset/data_06/data.yaml at imgsz=640 (178.70s)
+Benchmarks legend:  - ✅ Success  - ❎ Export passed but validation failed  - ❌️ Export failed
+                   Format Status❔  Size (MB) metrics/mAP50-95(B) Inference time (ms/im)    FPS
+0                 PyTorch       ✅       18.3              0.6376                  16.54  60.46
+1             TorchScript       ✅       36.4              0.6301                  14.72  67.95
+2                    ONNX       ✅       36.2              0.6301                 467.93   2.14
+3                OpenVINO       ❌        0.0                   -                      -      -
+4                TensorRT       ❌        0.0                   -                      -      -
+5                  CoreML       ❌        0.0                   -                      -      -
+6   TensorFlow SavedModel       ❌        0.0                   -                      -      -
+7     TensorFlow GraphDef       ❌        0.0                   -                      -      -
+8         TensorFlow Lite       ❌        0.0                   -                      -      -
+9     TensorFlow Edge TPU       ❌        0.0                   -                      -      -
+10          TensorFlow.js       ❌        0.0                   -                      -      -
+11           PaddlePaddle       ❌        0.0                   -                      -      -
+12                    MNN       ❌        0.0                   -                      -      -
+13                   NCNN       ✅       36.0              0.6301                 423.29   2.36
+14                    IMX       ❌        0.0                   -                      -      -
+15                   RKNN       ❌        0.0                   -                      -      -
